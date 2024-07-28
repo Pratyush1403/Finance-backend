@@ -34,7 +34,7 @@ const PORT = process.env.PORT || 9000;
 mongoose
   .connect(process.env.MONGO_URL)
   .then(async () => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    console.log(`Server connected at Port: ${PORT}`);
 
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();
@@ -42,4 +42,9 @@ mongoose
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);
   })
-  .catch((error) => console.log(`${error} did not connect`));
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1); // Exit the process with an error code
+  });
+
+export default app;
