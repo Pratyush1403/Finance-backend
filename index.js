@@ -24,14 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-const corsOptions = {
-  origin: 'https://financemanagementdashboard-4xqwn373x-pratyush-sharmas-projects.vercel.app',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Allow cookies to be sent
-  optionsSuccessStatus: 204
-};
 
-app.use(cors(corsOptions));
 
 /* ROUTES */
 app.use("/kpi", kpiRoutes);
